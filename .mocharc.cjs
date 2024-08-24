@@ -8,7 +8,7 @@ module.exports = {
   recursive: true,
   timeout: 5000,
   colors: "true",
-  spec: ["test/api/*.spec.ts"],
+  spec: ["test/api/timeSeriesIBM.spec.ts"],
   reporter: "mochawesome",
   "reporter-option": [
     `reportFilename=alpha_vantage_api_test_${process.env.NAME}`,

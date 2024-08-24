@@ -1,4 +1,4 @@
-name: Test Env Prod Mochawesome
+name: Run tests prod mochawesome
 
 on:
   workflow_dispatch:
@@ -22,6 +22,9 @@ jobs:
         run: npm run test:env-prod
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+
+      - name: List files in mochawesome-report
+        run: ls -R mochawesome-report
 
       - name: Upload mochawesome report
         uses: actions/upload-artifact@v3
