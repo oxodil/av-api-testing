@@ -1,0 +1,30 @@
+name: Test Env Prod Mochawesome
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-env-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22.5.1"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests with env-prod
+        run: npm run test:env-prod
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+
+      - name: Upload mochawesome report
+        uses: actions/upload-artifact@v3
+        with:
+          name: mochawesome-report
+          path: mochawesome-report/
