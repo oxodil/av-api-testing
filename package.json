@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "format": "prettier --write .",
     "lint": "rm -rf mochawesome-report && eslint .",
     "test:env-prod": "env-cmd -e prod mocha",
+    "test:env-prod:selected": "env-cmd -e prod mocha --grep",
     "test:env-test": "env-cmd -e test mocha",
     "test:prod-store-logs": "env-cmd -e prod mocha -R spec 2>&1 | tee prod-report.log",
     "test:test-store-logs": "env-cmd -e prod mocha -R spec 2>&1 | tee test-report.log"
@@ -21,6 +23,7 @@
     "eslint": "^9.9.1",
     "mocha": "^10.2.0",
     "mochawesome": "^7.1.3",
+    "prettier": "^3.3.3",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",

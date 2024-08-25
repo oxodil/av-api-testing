@@ -38,10 +38,15 @@ The project is configured to support multiple environments as defined in the `.e
 ## Example: Local Run
 
 To run the tests locally with environment variables:
-
 ```bash
 ALPHA_VANTAGE_API_KEY="YOUR_ALPHA_VANTAGE_KEY" FRED_API_KEY="YOUR_FRED_KEY" npm run test:env-prod
 ```
+
+To run selected tests execute:
+```bash
+ALPHA_VANTAGE_API_KEY="YOUR_ALPHA_VANTAGE_KEY" FRED_API_KEY="YOUR_FRED_KEY" npm run test:env-prod:selected "AV-TC-002"
+```
+
 
 ## API Key Sources
 

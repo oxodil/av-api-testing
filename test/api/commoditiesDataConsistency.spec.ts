@@ -1,6 +1,6 @@
-import { expect } from "chai";
-import federalReserveEconomicDataService from "../../servicesExternal/federalReserveEconomicDataService";
-import alphaVantageService from "../../serviceAlphaVantage/alphaVantageService";
+import { expect } from 'chai';
+import federalReserveEconomicDataService from '../../servicesExternal/federalReserveEconomicDataService';
+import alphaVantageService from '../../serviceAlphaVantage/alphaVantageService';
 
 interface FREDObservation {
   date: string;
@@ -27,26 +27,26 @@ interface FREDResponse {
 
 const LIMIT_NEWEST_ENTRIES = 20;
 const FRED_SERIES: Record<string, string> = {
-  NATURAL_GAS: "DHHNGSP",
-  COPPER: "PCOPPUSDM",
-  ALUMINUM: "PALUMUSDM",
-  WHEAT: "PWHEAMTUSDM",
-  CORN: "PMAIZMTUSDM",
-  COTTON: "PCOTTINDUSDM",
-  SUGAR: "PSUGAISAUSDM",
-  COFFEE: "PCOFFOTMUSDM",
+  NATURAL_GAS: 'DHHNGSP',
+  COPPER: 'PCOPPUSDM',
+  ALUMINUM: 'PALUMUSDM',
+  WHEAT: 'PWHEAMTUSDM',
+  CORN: 'PMAIZMTUSDM',
+  COTTON: 'PCOTTINDUSDM',
+  SUGAR: 'PSUGAISAUSDM',
+  COFFEE: 'PCOFFOTMUSDM',
 };
 
-describe("Commodities - verify data consistency between target and source", () => {
+describe('Commodities - verify data consistency between target and source', () => {
   before(async function () {
     //Before hook verifies if Federal Reserve Economic Data (FRED) API is available
     const fredResponse: FREDResponse =
       await federalReserveEconomicDataService.fetchObservationsForCommodity(
-        "DHHNGSP"
+        'DHHNGSP'
       );
 
     expect(fredResponse.status).to.equal(200);
-    expect(fredResponse.body).to.not.have.property("error_message");
+    expect(fredResponse.body).to.not.have.property('error_message');
   });
 
   Object.keys(FRED_SERIES).forEach((commodity) => {
@@ -54,7 +54,7 @@ describe("Commodities - verify data consistency between target and source", () =
       const alphaVantageResponse: AlphaVantageResponse =
         await alphaVantageService.fetchCommodityData(commodity);
       expect(alphaVantageResponse.status).to.equal(200);
-      expect(alphaVantageResponse.body).to.not.have.property("Information");
+      expect(alphaVantageResponse.body).to.not.have.property('Information');
 
       const alphaVantageData = alphaVantageResponse.body.data;
 
@@ -66,7 +66,7 @@ describe("Commodities - verify data consistency between target and source", () =
         );
 
       expect(fredResponse.status).to.equal(200);
-      expect(fredResponse.body).to.not.have.property("error_message");
+      expect(fredResponse.body).to.not.have.property('error_message');
 
       const fredData = fredResponse.body.observations || [];
 

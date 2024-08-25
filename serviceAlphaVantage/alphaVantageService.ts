@@ -1,7 +1,7 @@
-import supertest from "supertest";
+import supertest from 'supertest';
 
 const BASE_URL_ALPHA_VANTAGE = process.env.BASE_URL_ALPHA_VANTAGE as string;
-const DEFAULT_API_KEY = "demo";
+const DEFAULT_API_KEY = 'demo';
 
 class AlphaVantageService {
   private async fetchData(
@@ -11,7 +11,7 @@ class AlphaVantageService {
     queryParams.apikey = apiKey;
 
     const response = await supertest(BASE_URL_ALPHA_VANTAGE)
-      .get("/query")
+      .get('/query')
       .query(queryParams);
 
     return response;
@@ -19,7 +19,7 @@ class AlphaVantageService {
 
   async fetchCommodityData(
     functionName: string,
-    interval: "monthly" | "quarterly" | "annual" = "monthly",
+    interval: 'monthly' | 'quarterly' | 'annual' = 'monthly',
     apiKey: string = DEFAULT_API_KEY
   ): Promise<supertest.Response> {
     const queryParams = {
@@ -31,12 +31,12 @@ class AlphaVantageService {
   }
 
   async fetchTimeSeriesIntraday(
-    symbol: string = "IBM",
-    interval: string = "5min",
+    symbol: string = 'IBM',
+    interval: string = '5min',
     apiKey: string = DEFAULT_API_KEY
   ): Promise<supertest.Response> {
     const queryParams = {
-      function: "TIME_SERIES_INTRADAY",
+      function: 'TIME_SERIES_INTRADAY',
       symbol: symbol,
       interval: interval,
     };
@@ -49,7 +49,7 @@ class AlphaVantageService {
     apiKey: string = DEFAULT_API_KEY
   ): Promise<supertest.Response> {
     const queryParams = {
-      function: "SYMBOL_SEARCH",
+      function: 'SYMBOL_SEARCH',
       keywords: keywords,
     };
 
