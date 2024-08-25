@@ -20,7 +20,7 @@ const FRED_SERIES: Record<string, string> = {
   COFFEE: "PCOFFOTMUSDM",
 };
 
-describe("Should return data consistent with the FRED (information source)", () => {
+describe("Commodities - verify data consistency between target and source", () => {
   before(async function () {
     //Before hook verifies if Federal Reserve Economic Data (FRED) API is available
     const fredResponseHealthCheck =
@@ -33,7 +33,7 @@ describe("Should return data consistent with the FRED (information source)", () 
   });
 
   Object.keys(FRED_SERIES).forEach((commodity) => {
-    it(`should compare values between Alpha Vantage and FRED APIs for monthly interval of ${commodity}`, async function () {
+    it(`should compare values between Alpha Vantage and FRED APIs for monthly interval of ${commodity} | AV-TC-014`, async function () {
       const alphaVantageResponse = await alphaVantageService.fetchCommodityData(
         commodity
       );

@@ -2,6 +2,10 @@ name: Run tests prod mochawesome
 
 on:
   workflow_dispatch:
+    inputs:
+      ALPHA_VANTAGE_API_KEY:
+        description: "API Key for Alpha Vantage"
+        required: true
 
 jobs:
   run-api-tests-env-prod:
@@ -20,6 +24,7 @@ jobs:
       - name: Run tests with env-prod
         run: npm run test:env-prod
         env:
+          ALPHA_VANTAGE_API_KEY: ${{ github.event.inputs.ALPHA_VANTAGE_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
 
       - name: Check if mochawesome-report has files
