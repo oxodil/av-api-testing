@@ -1,4 +1,4 @@
-import tseslint from 'typescript-eslint';
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(...tseslint.configs.recommendedTypeCheckedOnly, {
   languageOptions: {
@@ -7,4 +7,4 @@ export default tseslint.config(...tseslint.configs.recommendedTypeCheckedOnly, {
       tsconfigRootDir: import.meta.dirname,
     },
   },
-});
+})

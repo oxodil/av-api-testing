@@ -1,7 +1,5 @@
 module.exports = {
-  require: [
-    'ts-node/register', // Register TypeScript
-  ],
+  require: ['ts-node/register'],
   extension: ['ts'],
   file: './test/setup.ts',
   recursive: true,
@@ -17,4 +15,4 @@ module.exports = {
     'showHooks=always',
     'code=true',
   ],
-};
+}
