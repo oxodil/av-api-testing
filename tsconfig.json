@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
  
-    /* Language and Environment */
     "target": "es2016",                                  
     "module": "commonjs",                                
    
