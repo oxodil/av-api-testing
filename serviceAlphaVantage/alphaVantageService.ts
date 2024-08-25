@@ -22,8 +22,8 @@ class AlphaVantageService {
   ): Promise<supertest.Response> {
     const queryParams = {
       function: 'TIME_SERIES_INTRADAY',
-      symbol: symbol,
-      interval: interval,
+      symbol,
+      interval,
     }
 
     return this.fetchData(queryParams, apiKey)
@@ -35,7 +35,7 @@ class AlphaVantageService {
   ): Promise<supertest.Response> {
     const queryParams = {
       function: 'SYMBOL_SEARCH',
-      keywords: keywords,
+      keywords,
     }
 
     return this.fetchData(queryParams, apiKey)
@@ -48,7 +48,7 @@ class AlphaVantageService {
   ): Promise<supertest.Response> {
     const queryParams = {
       function: functionName,
-      interval: interval,
+      interval,
     }
 
     return this.fetchData(queryParams, apiKey)

@@ -1,10 +1,8 @@
-import tseslint from 'typescript-eslint'
-
-export default tseslint.config(...tseslint.configs.recommendedTypeCheckedOnly, {
+export default {
   languageOptions: {
     parserOptions: {
       project: true,
-      tsconfigRootDir: import.meta.dirname,
+      tsconfigRootDir: import.meta.url,
     },
   },
-})
+}

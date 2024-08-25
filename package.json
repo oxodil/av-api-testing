@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "format": "prettier --write .",
-    "lint": "rm -rf mochawesome-report && eslint .",
+    "lint": "eslint .",
     "test:env-prod": "env-cmd -e prod mocha",
     "test:env-prod:selected": "env-cmd -e prod mocha --grep",
     "test:env-test": "env-cmd -e test mocha",
