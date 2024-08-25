@@ -1,4 +1,3 @@
-// .mocharc.cjs
 module.exports = {
   require: [
     "ts-node/register", // Register TypeScript

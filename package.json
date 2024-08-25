@@ -4,21 +4,26 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "lint": "rm -rf mochawesome-report && eslint .",
     "test:env-prod": "env-cmd -e prod mocha",
     "test:env-test": "env-cmd -e test mocha",
     "test:prod-store-logs": "env-cmd -e prod mocha -R spec 2>&1 | tee prod-report.log",
     "test:test-store-logs": "env-cmd -e prod mocha -R spec 2>&1 | tee test-report.log"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
     "@types/chai": "^4.3.5",
+    "@types/eslint__js": "^8.42.3",
     "@types/mocha": "^10.0.1",
     "@types/supertest": "^6.0.2",
     "chai": "^4.3.7",
-    "mocha": "^10.2.0",
     "env-cmd": "^10.1.0",
+    "eslint": "^9.9.1",
+    "mocha": "^10.2.0",
     "mochawesome": "^7.1.3",
     "supertest": "^7.0.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0"
   }
 }

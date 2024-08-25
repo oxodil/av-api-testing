@@ -1,6 +1,23 @@
 import { expect } from "chai";
 import alphaVantageService from "../../serviceAlphaVantage/alphaVantageService";
 
+// Define types for the expected API response
+interface BestMatch {
+  '1. symbol': string;
+  '2. name': string;
+  '3. type': string;
+  '4. region': string;
+  '5. marketOpen': string;
+  '6. marketClose': string;
+  '7. timezone': string;
+  '8. currency': string;
+  '9. matchScore': string;
+}
+
+interface SymbolSearchResponse {
+  bestMatches: BestMatch[];
+}
+
 describe("Core API - Ticker search", () => {
   it("should return demo data for demo keyword with demo api keyword AV-TC-002", async () => {
     const DEMO_KEYWORDS = ["tesco", "tencent", "BA", "SAIC"];
@@ -17,9 +34,7 @@ describe("Core API - Ticker search", () => {
   it("should return error for demo keyword other than allowed keyword AV-TC-003", async function () {
     const RESTRAINED_KEYWORDS = ["british", "petrol", "bp", "tesco"];
     const fetchPromises = RESTRAINED_KEYWORDS.map(async (keyword) => {
-      const restrictedKeywords = await alphaVantageService.fetchSymbolSearch(
-        keyword
-      );
+      const restrictedKeywords = await alphaVantageService.fetchSymbolSearch(keyword);
       expect(restrictedKeywords.status).to.equal(200);
       expect(restrictedKeywords.body).to.have.property("Information");
     });
@@ -30,18 +45,16 @@ describe("Core API - Ticker search", () => {
   it("should return data for keyword 'micro' using valid free api key AV-TC-004", async () => {
     const SEARCH_KEYWORD = "micro";
     const ALPHA_VANTAGE_API_KEY = process.env.ALPHA_VANTAGE_API_KEY as string;
-    const restrictedKeywords = await alphaVantageService.fetchSymbolSearch(
-      SEARCH_KEYWORD,
-      ALPHA_VANTAGE_API_KEY
-    );
-    expect(restrictedKeywords.status).to.equal(200);
+    const response = await alphaVantageService.fetchSymbolSearch(SEARCH_KEYWORD, ALPHA_VANTAGE_API_KEY);
 
-    const bestMatches = restrictedKeywords.body.bestMatches;
+    expect(response.status).to.equal(200);
 
-    bestMatches.forEach((match: any) => {
-      expect(match["2. name"].toLowerCase()).to.include(
-        SEARCH_KEYWORD.toLowerCase()
-      );
+    // Type the response body
+    const body = response.body as SymbolSearchResponse;
+    const bestMatches = body.bestMatches;
+
+    bestMatches.forEach((match) => {
+      expect(match["2. name"].toLowerCase()).to.include(SEARCH_KEYWORD.toLowerCase());
     });
 
     for (let i = 0; i < bestMatches.length - 1; i++) {
