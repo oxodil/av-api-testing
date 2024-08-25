@@ -1,0 +1,17 @@
+node_modules
+package-lock.json
+
+mochawesome-report
+*-report.log
+
+*.env
+*.local
+
+.git
+.gitignore
+
+Dockerfile
+.dockerignore
+
+*.md
+README.md

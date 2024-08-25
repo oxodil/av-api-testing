@@ -53,3 +53,5 @@ ALPHA_VANTAGE_API_KEY="YOUR_ALPHA_VANTAGE_KEY" FRED_API_KEY="YOUR_FRED_KEY" npm 
 
 - **Alpha Vantage API Key**: Obtain your API key from [Alpha Vantage](https://www.alphavantage.co/support/#api-key).
 - **FRED API Key**: Obtain your API key from [FRED](https://fred.stlouisfed.org/docs/api/api_key.html). Note that this key is stored as a GitHub secret and is not needed for local runs.
+
+## TO DO - Add documentation for docker
